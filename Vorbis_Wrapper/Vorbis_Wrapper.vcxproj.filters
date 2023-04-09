@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="stream.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
@@ -36,9 +33,24 @@
     <ClCompile Include="wav_header.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="..\include\vogg\audio_stream_in.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Source.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\include\vogg\net_stream.h">
+    <ClInclude Include="..\include\vogg\naudio_stream_in.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\vogg\naudio_stream_out.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\vogg\audio_stream_in.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\vogg\audio_stream_out.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

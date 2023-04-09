@@ -66,7 +66,7 @@ namespace vogg
         {
             /* get buffer and fill it with raw-samples */
             float** buf = vorbis_analysis_buffer(&vdsp, 1024);
-
+          
 
 
             /* from STEREO to STEREO */

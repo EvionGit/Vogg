@@ -105,15 +105,15 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>SFML_STATIC;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\include\;C:\Users\kondy\source\repos\audio_streaming\SFML-2.5.1\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)\lib\</AdditionalLibraryDirectories>
-      <AdditionalDependencies>ogg.lib;vorbis.lib;vorbisenc.lib;vorbisfile.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Users\kondy\source\repos\audio_streaming\SFML-2.5.1\lib;$(SolutionDir)\lib\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>ogg.lib;vorbis.lib;vorbisenc.lib;vorbisfile.lib;sfml-system-s-d.lib;sfml-audio-s-d.lib;openal32.lib;flac.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -133,6 +133,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\include\vogg\audio_stream_in.cpp" />
     <ClCompile Include="codec_config.cpp" />
     <ClCompile Include="decoder.cpp" />
     <ClCompile Include="encoder.cpp" />
@@ -142,7 +143,10 @@
     <ClCompile Include="wav_header.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\include\vogg\net_stream.h" />
+    <ClInclude Include="..\include\vogg\audio_stream_in.h" />
+    <ClInclude Include="..\include\vogg\audio_stream_out.h" />
+    <ClInclude Include="..\include\vogg\naudio_stream_in.h" />
+    <ClInclude Include="..\include\vogg\naudio_stream_out.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

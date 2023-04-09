@@ -3,7 +3,10 @@
 
 namespace vogg
 {
-	AudioStreamIn::AudioStreamIn() : s(0),e(0),size(0) {}
+	AudioStreamIn::AudioStreamIn() : s(0),e(0),size(0)
+	{
+		memset(audiobuffer, 0, AUDIOBUFF);
+	}
 
 	AudioStreamIn::~AudioStreamIn(){}
 
@@ -12,26 +15,38 @@ namespace vogg
 		while(1)
 		{
 			mtx.lock();
-			if (!size)
+			if (size < 4096)
 			{
 				mtx.unlock();
 				std::this_thread::sleep_for(std::chrono::milliseconds(20));
+				continue;
+			}
+			else if (AUDIOBUFF - s >= readamount)
+			{
+				
+				memcpy(tobuffer, audiobuffer + s, readamount);
+				s += readamount;
+				size -= readamount;
+				
 			}
 			else
 			{
-				int toread = size > readamount ? readamount : size;
+				int toread = AUDIOBUFF - s;
 				memcpy(tobuffer, audiobuffer + s, toread);
-				s += toread;
-				printf("data read: %i\n",toread);
-				size -= toread;
-				if (!size)
-				{
-					e = 0;
-					s = 0;
-				}
-				mtx.unlock();
-				return toread;
+				memcpy(tobuffer, audiobuffer, readamount - toread);
+
+				s = readamount - toread;
+				size -= readamount;
+			
 			}
+
+			if (!size)
+			{
+				e = 0;
+				s = 0;
+			}
+			mtx.unlock();
+			return readamount;
 		}	
 
 		
@@ -41,31 +56,30 @@ namespace vogg
 	size_t AudioStreamIn::stream_write(const void* frombuffer, size_t writesize)
 	{
 		std::lock_guard<std::mutex> lock(mtx);
-		printf("data write: %zu\n", writesize);
+		
+	
 
 		if ((AUDIOBUFF - e) >= writesize)
 		{
 			memcpy(audiobuffer + e, frombuffer, writesize);
 			e += writesize;
 			size += writesize;
+			
 		}
 		else
 		{
 			size_t length = AUDIOBUFF - e;
+
 			memcpy(audiobuffer + e, frombuffer, length);
 			memcpy(audiobuffer, (char*)frombuffer + length, writesize - length);
 
 			e = writesize - length;
+			if (s < e) s = e;
 
-			if (s <= e) s = e;
+			size += writesize;
 
-			size = AUDIOBUFF - s - e;
-
-			
 		}
 		
-		
-
 		return writesize;
 
 	}

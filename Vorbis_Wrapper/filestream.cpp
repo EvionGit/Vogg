@@ -6,7 +6,7 @@ namespace vogg
 {
 	FileStream::FileStream(const char* from, const char* mode)
 	{
-		errno_t code; // check error code
+		errno_t code = 0; // check error code
 
 		if ((code = fopen_s(&f, from, mode)) != 0)
 		{
@@ -29,6 +29,7 @@ namespace vogg
 
 	size_t FileStream::stream_write(const void* frombuffer, size_t writesize)
 	{
+		printf("written %zu\n", writesize);
 		return fwrite(frombuffer, 1, writesize, f);
 	}
 
