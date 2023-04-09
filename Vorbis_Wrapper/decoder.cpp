@@ -83,11 +83,11 @@ namespace vogg
 
 					/* send samples buffer to OUT-STREAM */
 					size_t w = out.stream_write(samplesbuffer, avail*4);
-
+					
 					/* accumulate all wrote samples in bytes*/
 					decoded_size += w * 4;
 
-					/* informs the decoder how many samples used from last buffer ountput */
+					/* informs the decoder how many samples used from last buffer output */
 					vorbis_synthesis_read(&vdsp, (int)(w/4));
 				}
 

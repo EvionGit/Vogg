@@ -133,7 +133,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\include\vogg\audio_stream_in.cpp" />
+    <ClCompile Include="audio_stream_in.cpp" />
+    <ClCompile Include="audio_stream_out.cpp" />
     <ClCompile Include="codec_config.cpp" />
     <ClCompile Include="decoder.cpp" />
     <ClCompile Include="encoder.cpp" />

@@ -33,10 +33,13 @@
     <ClCompile Include="wav_header.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="..\include\vogg\audio_stream_in.cpp">
+    <ClCompile Include="Source.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Source.cpp">
+    <ClCompile Include="audio_stream_in.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="audio_stream_out.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
