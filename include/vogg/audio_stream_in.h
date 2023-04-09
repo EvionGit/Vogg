@@ -16,7 +16,7 @@ namespace vogg
 
 		/* in this case the buffer is cycle*/
 		char audiobuffer[AUDIOBUFF];
-		uint32_t s, e;
+		uint32_t s, e; // start and end point
 		uint32_t size;
 
 	public:
@@ -24,10 +24,10 @@ namespace vogg
 		~AudioStreamIn();
 
 	public:
-		/* Encoder reads data from buffer */
+		/* Encoder reads data from the buffer */
 		virtual size_t stream_read(void* tobuffer, size_t buffersize, size_t readamount) override;
 
-		/* App writes data to buffer */
+		/* App writes data to the buffer */
 		virtual size_t stream_write(const void* frombuffer, size_t writesize) override;
 
 	};

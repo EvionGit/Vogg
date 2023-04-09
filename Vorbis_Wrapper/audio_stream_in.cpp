@@ -15,12 +15,22 @@ namespace vogg
 		while(1)
 		{
 			mtx.lock();
+			/* waiting until audiobuffer < 4096 bytes */
 			if (size < 4096)
 			{
 				mtx.unlock();
+
+				/* give time to CPU */
 				std::this_thread::sleep_for(std::chrono::milliseconds(20));
 				continue;
 			}
+
+			/* since we have a cyclic buffer, we have to check
+			   whether to reach the edge of the array and 
+			   whether we need to jump to the beginning of the buffer 
+			*/
+
+			/* if the requested data is placed without transition */
 			else if (AUDIOBUFF - s >= readamount)
 			{
 				
@@ -29,6 +39,8 @@ namespace vogg
 				size -= readamount;
 				
 			}
+
+			/* if not: need to move at the beginning and take last part of data */
 			else
 			{
 				int toread = AUDIOBUFF - s;
@@ -39,6 +51,11 @@ namespace vogg
 				size -= readamount;
 			
 			}
+
+			/* 
+			   if all data is given we can reset the positions
+			   and start from the beginning of the buffer
+			*/
 
 			if (!size)
 			{
@@ -57,7 +74,10 @@ namespace vogg
 	{
 		std::lock_guard<std::mutex> lock(mtx);
 		
-	
+		/*
+			check can we place data without trasition at the beginning
+			( look at the comment in STREAM_READER method -> )
+		*/
 
 		if ((AUDIOBUFF - e) >= writesize)
 		{
@@ -66,6 +86,8 @@ namespace vogg
 			size += writesize;
 			
 		}
+
+		/* if not: need to move at the beginning and placing last part of data */
 		else
 		{
 			size_t length = AUDIOBUFF - e;
