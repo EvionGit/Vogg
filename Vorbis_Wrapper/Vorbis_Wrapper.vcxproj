@@ -141,6 +141,9 @@
     <ClCompile Include="stream.cpp" />
     <ClCompile Include="wav_header.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\vogg\net_stream.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

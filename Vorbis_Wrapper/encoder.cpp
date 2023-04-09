@@ -57,6 +57,9 @@ namespace vogg
 
     void Encoder::encode()
     {
+        /* send codec config headers */
+        send_headers();
+
         size_t read;
         /* while there is data in IN-STREAM */
         while ((read = in.stream_read(readbuffer,4096,4096))>0)
