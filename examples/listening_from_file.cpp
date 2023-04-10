@@ -20,7 +20,7 @@ public:
 		initialize(2, 44100); // default init configs for listener (2 channels 44100hz)
 	}
 
-	/* overrided method which call every time when data need for execute */
+	/* overrided method which calls every time when data needed executing */
 	virtual bool onGetData(Chunk& data) override
 	{
 		int c = astream.stream_read(buff, 4096, 4096); // blocking func which waiting decoded data 
