@@ -1,10 +1,10 @@
 #ifndef AUDIO_PACKET_H
 #define AUDIO_PACKET_H
 
-#include "base_definition.h"
+#include <wsock/base_definition.h>
 
 
-namespace wpack
+namespace wsock
 {
 	struct AudioPacket
 	{

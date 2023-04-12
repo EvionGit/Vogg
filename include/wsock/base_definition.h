@@ -6,7 +6,7 @@
 #include <string> 
 #include <stdio.h>
 #include <stdexcept>
-#include "wsa_init.h"
+#include <wsock/wsa_init.h>
 
 #pragma comment(lib,"ws2_32.lib")
 

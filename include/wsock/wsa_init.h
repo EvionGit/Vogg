@@ -1,7 +1,7 @@
 #ifndef WSA_INIT_H
 #define WSA_INIT_H
 
-#include "base_definition.h"
+#include <wsock/base_definition.h>
 
 namespace wsock
 {

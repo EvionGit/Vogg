@@ -20,7 +20,7 @@ public:
 		initialize(2, 44100); // default init configs for listener (2 channels 44100hz)
 	}
 
-	/* overrided method which calls every time when data needed executing */
+	/* overrided method which calls every time when data needed for executing */
 	virtual bool onGetData(Chunk& data) override
 	{
 		int c = astream.stream_read(buff, 4096, 4096); // blocking func which waiting decoded data 
@@ -45,8 +45,8 @@ void listen_from_file()
 	/*
 		Load file to FileStream from input file,
 		decode comppressed data by Decoder and 
-		move decoded samples to AudioStreamOut where
-		samples are playing.
+		move decoded samples to AudioStreamOut stream
+		and then AudioListener takes 4096 chunk audio to playing
 	*/
 
 	vogg::FileStream ainput("epica.ogg", "rb"); // FileStream with .ogg sound file
@@ -56,7 +56,7 @@ void listen_from_file()
 
 	AudioListener lis(aoutput); // simply implemented from SFML class to listening audio data
 
-	vogg::Decoder decoder(ainput, aoutput, c1, c2); // decoder from .ogg to PCM
+	vogg::Decoder decoder(ainput, aoutput, c1, c2); // decoder from VORBIS to PCM
 
 	printf("playing...\n");
 	lis.play(); // running in another thread

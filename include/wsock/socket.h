@@ -1,8 +1,8 @@
 #ifndef SOCKET_H
 #define SOCKET_H
 
-#include "base_definition.h"
-#include "addr_struct.h"
+#include <wsock/base_definition.h>
+#include <wsock/addr_struct.h>
 
 /* Base socket class */
 namespace wsock

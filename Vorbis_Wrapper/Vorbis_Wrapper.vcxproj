@@ -133,21 +133,37 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\examples\decoding_ogg_to_wav.cpp" />
+    <ClCompile Include="..\examples\encoding_wav_to_ogg.cpp" />
+    <ClCompile Include="..\examples\listening_from_file.cpp" />
+    <ClCompile Include="..\examples\recording_to_file.cpp" />
+    <ClCompile Include="addr_struct.cpp" />
     <ClCompile Include="audio_stream_in.cpp" />
     <ClCompile Include="audio_stream_out.cpp" />
     <ClCompile Include="codec_config.cpp" />
     <ClCompile Include="decoder.cpp" />
     <ClCompile Include="encoder.cpp" />
     <ClCompile Include="filestream.cpp" />
+    <ClCompile Include="net_stream_audio_in.cpp" />
+    <ClCompile Include="net_stream_audio_out.cpp" />
+    <ClCompile Include="socket.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="stream.cpp" />
+    <ClCompile Include="udp_socket.cpp" />
     <ClCompile Include="wav_header.cpp" />
+    <ClCompile Include="wsa_init.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\vogg\audio_stream_in.h" />
     <ClInclude Include="..\include\vogg\audio_stream_out.h" />
-    <ClInclude Include="..\include\vogg\naudio_stream_in.h" />
-    <ClInclude Include="..\include\vogg\naudio_stream_out.h" />
+    <ClInclude Include="..\include\vogg\net_stream_audio_in.h" />
+    <ClInclude Include="..\include\vogg\net_stream_audio_out.h" />
+    <ClInclude Include="..\include\wsock\addr_struct.h" />
+    <ClInclude Include="..\include\wsock\audio_packet.h" />
+    <ClInclude Include="..\include\wsock\base_definition.h" />
+    <ClInclude Include="..\include\wsock\socket.h" />
+    <ClInclude Include="..\include\wsock\udp_socket.h" />
+    <ClInclude Include="..\include\wsock\wsa_init.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,7 +1,7 @@
 #ifndef ADDR_STRUCT_H
 #define ADDR_STRUCT_H
 
-#include "base_definition.h"
+#include <wsock/base_definition.h>
 
 namespace wsock
 {

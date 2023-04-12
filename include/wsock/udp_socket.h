@@ -1,9 +1,9 @@
 #ifndef UDP_SOCKET_H
 #define UDP_SOCKET_H
 
-#include "base_definition.h"
-#include "addr_struct.h"
-#include "socket.h"
+#include <wsock/base_definition.h>
+#include <wsock/addr_struct.h>
+#include <wsock/socket.h>
 
 /* Base class of udp-socket */
 namespace wsock
